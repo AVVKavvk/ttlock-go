@@ -455,6 +455,46 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/locks/battery-status": {
+            "post": {
+                "description": "Get TTLock battery percentage/status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock battery status",
+                "parameters": [
+                    {
+                        "description": "Lock battery status request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockQueryBatteryRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock battery status fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/api/locks/change-admin-passcode": {
             "post": {
                 "description": "Change TTLock admin passcode",
@@ -695,6 +735,46 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/locks/lock": {
+            "post": {
+                "description": "Remotely lock a TTLock device",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Lock a TTLock",
+                "parameters": [
+                    {
+                        "description": "Lock request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockLockUnlockRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock locked successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/api/locks/passcodes": {
             "post": {
                 "description": "Get all passcodes associated with a TTLock",
@@ -722,6 +802,46 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "Lock passcodes fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/query-open-state": {
+            "post": {
+                "description": "Get current TTLock open/closed state",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Query lock open state",
+                "parameters": [
+                    {
+                        "description": "Lock query open state request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockQueryOpenStateRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock open state fetched successfully",
                         "schema": {}
                     },
                     "400": {
@@ -775,6 +895,86 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/locks/time": {
+            "post": {
+                "description": "Get TTLock device time",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock time",
+                "parameters": [
+                    {
+                        "description": "Lock time request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockTimeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock time fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/unlock": {
+            "post": {
+                "description": "Remotely unlock a TTLock device",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Unlock a TTLock",
+                "parameters": [
+                    {
+                        "description": "Unlock request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockLockUnlockRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock unlocked successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/api/locks/update": {
             "post": {
                 "description": "Update TTLock information",
@@ -802,6 +1002,46 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "Lock updated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/update-time": {
+            "post": {
+                "description": "Update TTLock device time",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Update lock time",
+                "parameters": [
+                    {
+                        "description": "Lock update time request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockUpdateTimeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock time updated successfully",
                         "schema": {}
                     },
                     "400": {
@@ -1649,6 +1889,75 @@ const docTemplate = `{
                 }
             }
         },
+        "ttlock.LockLockUnlockRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockQueryBatteryRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockQueryOpenStateRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
         "ttlock.LockRenameRequestParams": {
             "type": "object",
             "required": [
@@ -1676,6 +1985,29 @@ const docTemplate = `{
                 }
             }
         },
+        "ttlock.LockTimeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
         "ttlock.LockUpdateRequestParams": {
             "type": "object",
             "required": [
@@ -1697,6 +2029,29 @@ const docTemplate = `{
                 },
                 "lockData": {
                     "type": "string"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockUpdateTimeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
                 },
                 "lockId": {
                     "type": "integer"

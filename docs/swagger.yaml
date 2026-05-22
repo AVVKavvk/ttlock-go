@@ -344,6 +344,54 @@ definitions:
     - pageNo
     - pageSize
     type: object
+  ttlock.LockLockUnlockRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.LockQueryBatteryRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.LockQueryOpenStateRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
   ttlock.LockRenameRequestParams:
     properties:
       accessToken:
@@ -363,6 +411,22 @@ definitions:
     - lockAlias
     - lockId
     type: object
+  ttlock.LockTimeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
   ttlock.LockUpdateRequestParams:
     properties:
       accessToken:
@@ -380,6 +444,22 @@ definitions:
     - clientId
     - date
     - lockData
+    - lockId
+    type: object
+  ttlock.LockUpdateTimeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
     - lockId
     type: object
   ttlock.PasscodeCustomRequestParams:
@@ -939,6 +1019,33 @@ paths:
       summary: Set lock auto lock time
       tags:
       - Locks
+  /api/locks/battery-status:
+    post:
+      consumes:
+      - application/json
+      description: Get TTLock battery percentage/status
+      parameters:
+      - description: Lock battery status request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockQueryBatteryRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock battery status fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock battery status
+      tags:
+      - Locks
   /api/locks/change-admin-passcode:
     post:
       consumes:
@@ -1101,6 +1208,33 @@ paths:
       summary: Get lock list
       tags:
       - Locks
+  /api/locks/lock:
+    post:
+      consumes:
+      - application/json
+      description: Remotely lock a TTLock device
+      parameters:
+      - description: Lock request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockLockUnlockRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock locked successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Lock a TTLock
+      tags:
+      - Locks
   /api/locks/passcodes:
     post:
       consumes:
@@ -1126,6 +1260,33 @@ paths:
           description: Internal server error
           schema: {}
       summary: Get lock passcodes list
+      tags:
+      - Locks
+  /api/locks/query-open-state:
+    post:
+      consumes:
+      - application/json
+      description: Get current TTLock open/closed state
+      parameters:
+      - description: Lock query open state request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockQueryOpenStateRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock open state fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Query lock open state
       tags:
       - Locks
   /api/locks/rename:
@@ -1155,6 +1316,60 @@ paths:
       summary: Rename lock
       tags:
       - Locks
+  /api/locks/time:
+    post:
+      consumes:
+      - application/json
+      description: Get TTLock device time
+      parameters:
+      - description: Lock time request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockTimeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock time fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock time
+      tags:
+      - Locks
+  /api/locks/unlock:
+    post:
+      consumes:
+      - application/json
+      description: Remotely unlock a TTLock device
+      parameters:
+      - description: Unlock request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockLockUnlockRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock unlocked successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Unlock a TTLock
+      tags:
+      - Locks
   /api/locks/update:
     post:
       consumes:
@@ -1180,6 +1395,33 @@ paths:
           description: Internal server error
           schema: {}
       summary: Update lock
+      tags:
+      - Locks
+  /api/locks/update-time:
+    post:
+      consumes:
+      - application/json
+      description: Update TTLock device time
+      parameters:
+      - description: Lock update time request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockUpdateTimeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock time updated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Update lock time
       tags:
       - Locks
   /api/passcode/delete:

@@ -242,3 +242,63 @@ type LockListEkeyResponse struct {
 	Pages    int              `json:"pages"`
 	Err
 }
+
+// Lock Unlock
+
+type LockLockUnlockRequestParams struct {
+	Auth
+	LockId int   `json:"lockId" validate:"required"`
+	Date   int64 `json:"date" validate:"required"`
+}
+
+// Lock Query Open state
+
+type LockQueryOpenStateRequestParams struct {
+	Auth
+	LockId int   `json:"lockId" validate:"required"`
+	Date   int64 `json:"date" validate:"required"`
+}
+
+type LockQueryOpenStateResponse struct {
+	State int `json:"state"`
+	Err
+}
+
+// Lock Time
+
+type LockTimeRequestParams struct {
+	Auth
+	LockId int   `json:"lockId" validate:"required"`
+	Date   int64 `json:"date" validate:"required"`
+}
+
+type LockTimeResponse struct {
+	Date int64 `json:"date"`
+	Err
+}
+
+// Update time
+
+type LockUpdateTimeRequestParams struct {
+	Auth
+	LockId int   `json:"lockId" validate:"required"`
+	Date   int64 `json:"date" validate:"required"`
+}
+
+type LockUpdateTimeResponse struct {
+	Date int64 `json:"date"`
+	Err
+}
+
+// Query Battery
+
+type LockQueryBatteryRequestParams struct {
+	Auth
+	LockId int   `json:"lockId" validate:"required"`
+	Date   int64 `json:"date" validate:"required"`
+}
+
+type LockQueryBatteryResponse struct {
+	ElectricQty int `json:"electricQuantity"`
+	Err
+}

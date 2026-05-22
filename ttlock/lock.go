@@ -422,3 +422,212 @@ func (l *Lock) ListPasscodes(request *ttt.PasscodeListRequestParams) (*ttt.Passc
 	}
 	return &response, nil
 }
+
+func (l *Lock) Lock(request *ttt.LockLockUnlockRequestParams) (*ttt.Err, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/lock"
+
+	bytes, code, err := TTLockV3Client.PostWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/x-www-form-urlencoded"}, []byte(payload))
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.Err
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to lock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}
+
+func (l *Lock) Unlock(request *ttt.LockLockUnlockRequestParams) (*ttt.Err, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/unlock"
+
+	bytes, code, err := TTLockV3Client.PostWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/x-www-form-urlencoded"}, []byte(payload))
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.Err
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to unlock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}
+func (l *Lock) QueryOpenState(request *ttt.LockQueryOpenStateRequestParams) (*ttt.LockQueryOpenStateResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/queryOpenState?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.LockQueryOpenStateResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to unlock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}
+
+func (l *Lock) LockTime(request *ttt.LockTimeRequestParams) (*ttt.LockTimeResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/queryDate?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.LockTimeResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to unlock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}
+
+func (l *Lock) UpdateTime(request *ttt.LockUpdateTimeRequestParams) (*ttt.LockUpdateTimeResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/updateDate"
+
+	bytes, code, err := TTLockV3Client.PostWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/x-www-form-urlencoded"}, []byte(payload))
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.LockUpdateTimeResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to unlock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}
+
+func (l *Lock) BatteryStatus(request *ttt.LockQueryBatteryRequestParams) (*ttt.LockQueryBatteryResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("lockId", strconv.Itoa(request.LockId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/lock/queryElectricQuantity?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.LockQueryBatteryResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("failed to unlock lock: %s", response.ErrMsg)
+	}
+	return &response, nil
+}

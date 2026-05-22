@@ -55,6 +55,13 @@ func AddRoutes(router *echo.Echo) {
 		locks.POST("/auto-lock-time", api.LockAutoLockTime)
 		locks.POST("/keys", api.LockListEKeys)
 		locks.POST("/passcodes", api.LockListPasscodes)
+		locks.POST("/lock", api.LockLock)
+		locks.POST("/unlock", api.LockUnlock)
+		locks.POST("/query-open-state", api.LockQueryOpenState)
+		locks.POST("/time", api.LockTime)
+		locks.POST("/update-time", api.LockUpdateTime)
+		locks.POST("/battery-status", api.LockBatteryStatus)
+
 	}
 
 	ekey := router.Group("/api/ekey")

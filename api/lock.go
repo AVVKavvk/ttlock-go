@@ -343,3 +343,201 @@ func LockListPasscodes(ctx echo.Context) error {
 
 	return lib.ContextV1Success(ctx, "Lock Passcodes List", response)
 }
+
+// LockLock godoc
+//
+//	@Summary		Lock a TTLock
+//	@Description	Remotely lock a TTLock device
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockLockUnlockRequestParams	true	"Lock request params"
+//	@Success		200		{object}	interface{}						"Lock locked successfully"
+//	@Failure		400		{object}	interface{}						"Bad request"
+//	@Failure		500		{object}	interface{}						"Internal server error"
+//	@Router			/api/locks/lock [post]
+func LockLock(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock lock request received")
+
+	var body ttt.LockLockUnlockRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.Lock(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Locked", response)
+}
+
+// LockUnlock godoc
+//
+//	@Summary		Unlock a TTLock
+//	@Description	Remotely unlock a TTLock device
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockLockUnlockRequestParams	true	"Unlock request params"
+//	@Success		200		{object}	interface{}						"Lock unlocked successfully"
+//	@Failure		400		{object}	interface{}						"Bad request"
+//	@Failure		500		{object}	interface{}						"Internal server error"
+//	@Router			/api/locks/unlock [post]
+func LockUnlock(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock unlock request received")
+
+	var body ttt.LockLockUnlockRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.Unlock(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Unlocked", response)
+}
+
+// LockQueryOpenState godoc
+//
+//	@Summary		Query lock open state
+//	@Description	Get current TTLock open/closed state
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockQueryOpenStateRequestParams	true	"Lock query open state request params"
+//	@Success		200		{object}	interface{}								"Lock open state fetched successfully"
+//	@Failure		400		{object}	interface{}								"Bad request"
+//	@Failure		500		{object}	interface{}								"Internal server error"
+//	@Router			/api/locks/query-open-state [post]
+func LockQueryOpenState(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock query open state request received")
+
+	var body ttt.LockQueryOpenStateRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.QueryOpenState(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Query Open State", response)
+}
+
+// LockTime godoc
+//
+//	@Summary		Get lock time
+//	@Description	Get TTLock device time
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockTimeRequestParams	true	"Lock time request params"
+//	@Success		200		{object}	interface{}					"Lock time fetched successfully"
+//	@Failure		400		{object}	interface{}					"Bad request"
+//	@Failure		500		{object}	interface{}					"Internal server error"
+//	@Router			/api/locks/time [post]
+func LockTime(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock time request received")
+
+	var body ttt.LockTimeRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.LockTime(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Time", response)
+}
+
+// LockUpdateTime godoc
+//
+//	@Summary		Update lock time
+//	@Description	Update TTLock device time
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockUpdateTimeRequestParams	true	"Lock update time request params"
+//	@Success		200		{object}	interface{}						"Lock time updated successfully"
+//	@Failure		400		{object}	interface{}						"Bad request"
+//	@Failure		500		{object}	interface{}						"Internal server error"
+//	@Router			/api/locks/update-time [post]
+func LockUpdateTime(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock update time request received")
+
+	var body ttt.LockUpdateTimeRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.UpdateTime(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Update Time", response)
+}
+
+// LockBatteryStatus godoc
+//
+//	@Summary		Get lock battery status
+//	@Description	Get TTLock battery percentage/status
+//	@Tags			Locks
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		ttt.LockQueryBatteryRequestParams	true	"Lock battery status request params"
+//	@Success		200		{object}	interface{}							"Lock battery status fetched successfully"
+//	@Failure		400		{object}	interface{}							"Bad request"
+//	@Failure		500		{object}	interface{}							"Internal server error"
+//	@Router			/api/locks/battery-status [post]
+func LockBatteryStatus(ctx echo.Context) error {
+	_, rid := utils.GetRequestContextAndIdFromEchoContext(ctx)
+
+	log.Infoxf(&logger.XFields{"rid": rid}, "Lock battery status request received")
+
+	var body ttt.LockQueryBatteryRequestParams
+	if err := ctx.Bind(&body); err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusBadRequest, err.Error(), ""))
+	}
+	body.Date = time.Now().UnixMilli()
+	lock := ttlock.Lock{}
+
+	response, err := lock.BatteryStatus(&body)
+
+	if err != nil {
+		return lib.ContextV1Err(ctx, lib.NewErrorCustom(http.StatusInternalServerError, err.Error(), ""))
+	}
+
+	return lib.ContextV1Success(ctx, "Lock Battery Status", response)
+}
