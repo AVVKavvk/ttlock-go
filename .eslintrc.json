@@ -1,0 +1,159 @@
+/* RULES AT https://eslint.org/docs
+ * "off" or 0 - turn the rule off
+ * "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+ * "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
+ *
+ * Running eslint --fix <filename> will fix some of these errors but not foolproof or a substitute for fixing/testing
+ */
+
+{
+  "env": {
+    "es6": true // allows ES6 features like const, import, etc.
+  },
+  "globals": {
+    "jQuery": true
+    // add more globals as needed
+  },
+  "rules": {
+    "curly": [
+      // Require curly braces on everything - error if not
+      2,
+      "all"
+    ],
+    "eqeqeq": 2, // error if not deep equality
+    "no-eq-null": 2, //  Prevent null equality errors
+    "guard-for-in": 2, // Looping over objects with a for in loop will include properties that are inherited through the prototype chain. This behavior can lead to unexpected items in your for loop.
+    "no-unused-vars": [
+      // Prevent declaration of unused variables - we have a lot of these
+      2,
+      {
+        "args": "none" // don't check function args
+      }
+    ],
+    "no-use-before-define": [
+      // prevent use of variables before they are defined
+      2,
+      {
+        "functions": false // except for functions
+      }
+    ],
+    "operator-linebreak": [
+      // where linebreaks are allowed in a long statement full of operators
+      2,
+      "before" // willing to change to 'after'
+    ],
+    "max-len": [
+      // Maximim line length - throw error if options are not followed
+      2,
+      {
+        "code": 80, // 300 chars, willing to change
+        "tabWidth": 4,
+        "ignoreComments": true // comment however you want
+      }
+    ],
+    "indent": [
+      // require multiples of 4 spaces of indentation
+      2,
+      4,
+      {
+        "SwitchCase": 1 // Also apply to switch cases
+      }
+    ],
+    "quotes": [
+      // single quotes on strings - great for inline html, where attribute values ideally should use double quotes
+      /* NOTE - for apostrophes in string text, use \' or typographical curly apostrophe
+       * MAC shortcuts
+       * Alt + ] produces an opening single curly quote ( ‘ )
+       * Alt + Shift + ] produces a closing single curly quote ( ’ )
+       * Alt + [ produces an opening double curly quote ( “ )
+       * Alt + Shift + [ produces a closing double curly quote ( ” )
+       */
+      2,
+      "single"
+    ],
+    "no-multi-str": 2, // disallow multiline strings - willing to change, but can cause problems
+    "no-mixed-spaces-and-tabs": 2, // seriously. the codebase is full of this.
+    "no-trailing-spaces": 2, // set your editor to trim trailing whitespaces on save, or something
+    "space-unary-ops": [
+      // require space around operators
+      2,
+      {
+        "nonwords": false, // disable on nonwords (like ++), overridden for infix operators by space-infix-ops
+        "overrides": {} // add possible overrides
+      }
+    ],
+    "brace-style": [
+      2,
+      "1tbs", // enforce one true brace style (see docs)
+      {
+        "allowSingleLine": true // but allow single line statements to be in braces on the same line
+      }
+    ],
+    "comma-spacing": [
+      // require one space after commas
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "comma-dangle": [
+      // no dangling commas
+      2,
+      "never"
+    ],
+    "comma-style": [
+      // commas at the end of the line, please
+      "error",
+      "last"
+    ],
+    "keyword-spacing": [
+      // enforce consistent spacing around keywords, ex. '} else {'
+      2,
+      {}
+    ],
+    "space-infix-ops": 2, // require spaces around infix operators
+    "space-before-blocks": [
+      // require space before opening curly braces for code blocks, ex. 'function () {'
+      2,
+      "always"
+    ],
+    "space-before-function-paren": [
+      // require space before opening function paren
+      2,
+      {
+        "anonymous": "never", // on anonymous functions
+        "named": "never" // never on named functions
+      }
+    ],
+    "array-bracket-spacing": [
+      // no spaces after opening array bracket or before closing bracket
+      2,
+      "never"
+    ],
+    "space-in-parens": [
+      // no space after opening paren or before close paren
+      2,
+      "never"
+    ],
+    "no-multiple-empty-lines": 2, // just like it says
+    "no-with": 2, // The with statement is potentially problematic because it adds members of an object to the current scope, making it impossible to tell what a variable inside the block actually refers to.
+    // https://yuiblog.com/blog/2006/04/11/with-statement-considered-harmful/
+    "no-spaced-func": 2,
+    "key-spacing": [
+      // require a minimum of one space only after a key colon - can have more for clearer formatting
+      2,
+      {
+        "mode": "minimum",
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "dot-notation": 2, // Very important! dot/bracket notation rules: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
+    "semi": [
+      // the best for last - choosing to require semicolons everywhere. inconsistent semicolon use can cause errors.
+      2,
+      "always"
+    ]
+  }
+}

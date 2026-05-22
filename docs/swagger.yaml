@@ -1,0 +1,1418 @@
+basePath: /
+definitions:
+  ttlock.AccessTokenRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - password
+    - username
+    type: object
+  ttlock.EKeyChangeValidTimeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      endDate:
+        type: integer
+      keyId:
+        type: integer
+      startDate:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - endDate
+    - keyId
+    - startDate
+    type: object
+  ttlock.EKeyDeleteRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      keyId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - keyId
+    type: object
+  ttlock.EKeyFreezeUnfreezeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      keyId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - keyId
+    type: object
+  ttlock.EKeyGetOneRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.EKeyListRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      groupId:
+        type: integer
+      lockAlias:
+        type: string
+      pageNo:
+        type: integer
+      pageSize:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.EKeySendRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      createUser:
+        enum:
+        - 1
+        - 2
+        type: integer
+      date:
+        type: integer
+      endDate:
+        type: integer
+      keyName:
+        type: string
+      keyRight:
+        enum:
+        - 1
+        - 2
+        type: integer
+      lockId:
+        type: integer
+      receiverUsername:
+        type: string
+      remarks:
+        type: string
+      remoteEnable:
+        enum:
+        - 1
+        - 2
+        type: integer
+      startDate:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - endDate
+    - keyName
+    - lockId
+    - receiverUsername
+    - startDate
+    type: object
+  ttlock.EKeyUpdateRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      keyId:
+        type: integer
+      keyName:
+        type: string
+      remoteEnable:
+        enum:
+        - 1
+        - 2
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - keyId
+    type: object
+  ttlock.LockAutoLockTimeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+      seconds:
+        type: integer
+      type:
+        enum:
+        - 1
+        - 2
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    - seconds
+    - type
+    type: object
+  ttlock.LockChangeAdminPasscodeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      changeType:
+        enum:
+        - 1
+        - 2
+        type: integer
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+      password:
+        type: string
+    required:
+    - accessToken
+    - changeType
+    - clientId
+    - date
+    - lockId
+    - password
+    type: object
+  ttlock.LockDeleteRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.LockDetailsRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.LockInitializeRequest:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      groupId:
+        type: integer
+      lockAlias:
+        type: string
+      lockData:
+        type: string
+      nbInitSuccess:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockData
+    type: object
+  ttlock.LockListEKeyRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      keyRight:
+        enum:
+        - 1
+        - 2
+        type: integer
+      lockId:
+        type: integer
+      orderBy:
+        enum:
+        - 1
+        - 2
+        type: integer
+      pageNo:
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 200
+        minimum: 1
+        type: integer
+      searchStr:
+        type: string
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.LockListRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      groupId:
+        type: integer
+      lockAlias:
+        type: string
+      pageNo:
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 1000
+        minimum: 1
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.LockRenameRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockAlias:
+        type: string
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockAlias
+    - lockId
+    type: object
+  ttlock.LockUpdateRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockData:
+        type: string
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockData
+    - lockId
+    type: object
+  ttlock.PasscodeCustomRequestParams:
+    properties:
+      accessToken:
+        type: string
+      addType:
+        enum:
+        - 1
+        - 2
+        type: integer
+      clientId:
+        type: string
+      date:
+        type: integer
+      endDate:
+        type: integer
+      keyboardPwd:
+        type: integer
+      keyboardPwdName:
+        type: string
+      keyboardPwdType:
+        enum:
+        - 2
+        - 3
+        type: integer
+      lockId:
+        type: integer
+      startDate:
+        type: integer
+    required:
+    - accessToken
+    - addType
+    - clientId
+    - date
+    - endDate
+    - keyboardPwd
+    - keyboardPwdType
+    - lockId
+    - startDate
+    type: object
+  ttlock.PasscodeDeleteRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      deleteType:
+        enum:
+        - 1
+        - 2
+        type: integer
+      keyboardPwdId:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - deleteType
+    - keyboardPwdId
+    - lockId
+    type: object
+  ttlock.PasscodeListRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+      orderBy:
+        enum:
+        - 1
+        - 2
+        type: integer
+      pageNo:
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 200
+        minimum: 1
+        type: integer
+      searchStr:
+        type: string
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    - orderBy
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.PasscodeRandomRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      endDate:
+        type: integer
+      keyboardPwdName:
+        type: string
+      keyboardPwdType:
+        type: integer
+      lockId:
+        type: integer
+      startDate:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - endDate
+    - keyboardPwdType
+    - lockId
+    - startDate
+    type: object
+  ttlock.PasscodeUpdateRequestParams:
+    properties:
+      accessToken:
+        type: string
+      changeType:
+        enum:
+        - 1
+        - 2
+        type: integer
+      clientId:
+        type: string
+      date:
+        type: integer
+      endDate:
+        type: integer
+      keyboardPwdId:
+        type: integer
+      keyboardPwdName:
+        type: string
+      lockId:
+        type: integer
+      newKeyboardPwd:
+        type: string
+      startDate:
+        type: integer
+    required:
+    - accessToken
+    - changeType
+    - clientId
+    - date
+    - keyboardPwdId
+    - lockId
+    type: object
+  ttlock.RefreshAccessTokenRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      grant_type:
+        type: string
+      refresh_token:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - grant_type
+    - refresh_token
+    type: object
+  ttlock.UserDeleteRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      date:
+        type: integer
+      username:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - date
+    - username
+    type: object
+  ttlock.UserListRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      date:
+        type: integer
+      endDate:
+        type: integer
+      pageNo:
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 100
+        minimum: 1
+        type: integer
+      startDate:
+        type: integer
+      username:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - date
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.UserPasswordResetRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      date:
+        type: integer
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - date
+    - password
+    - username
+    type: object
+  ttlock.UserRegisterRequestParams:
+    properties:
+      clientId:
+        type: string
+      clientSecret:
+        type: string
+      date:
+        type: integer
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - clientId
+    - clientSecret
+    - date
+    - password
+    - username
+    type: object
+info:
+  contact: {}
+  title: TTLock Api
+  version: "1.0"
+paths:
+  /api/auth/access-token:
+    post:
+      consumes:
+      - application/json
+      description: Generate TTLock access token
+      parameters:
+      - description: Access token request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.AccessTokenRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Access token generated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get access token
+      tags:
+      - Authentication
+  /api/auth/refresh-access-token:
+    post:
+      consumes:
+      - application/json
+      description: Refresh TTLock access token using refresh token
+      parameters:
+      - description: Refresh access token request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.RefreshAccessTokenRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Access token refreshed successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Refresh access token
+      tags:
+      - Authentication
+  /api/ekey/change-valid-time:
+    post:
+      consumes:
+      - application/json
+      description: Change eKey validity period
+      parameters:
+      - description: eKey valid time request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyChangeValidTimeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey valid time changed successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Change eKey valid time
+      tags:
+      - EKeys
+  /api/ekey/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete an eKey
+      parameters:
+      - description: eKey delete request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyDeleteRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey deleted successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Delete eKey
+      tags:
+      - EKeys
+  /api/ekey/freeze:
+    post:
+      consumes:
+      - application/json
+      description: Freeze an eKey
+      parameters:
+      - description: eKey freeze request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyFreezeUnfreezeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey frozen successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Freeze eKey
+      tags:
+      - EKeys
+  /api/ekey/get-one:
+    post:
+      consumes:
+      - application/json
+      description: Get eKey details by ID
+      parameters:
+      - description: eKey get one request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyGetOneRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get one eKey
+      tags:
+      - EKeys
+  /api/ekey/list:
+    post:
+      consumes:
+      - application/json
+      description: Get all eKeys
+      parameters:
+      - description: eKey list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyListRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKeys fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get eKey list
+      tags:
+      - EKeys
+  /api/ekey/send:
+    post:
+      consumes:
+      - application/json
+      description: Send an eKey to a user
+      parameters:
+      - description: eKey send request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeySendRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey sent successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Send eKey
+      tags:
+      - EKeys
+  /api/ekey/unfreeze:
+    post:
+      consumes:
+      - application/json
+      description: Unfreeze an eKey
+      parameters:
+      - description: eKey unfreeze request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyFreezeUnfreezeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey unfrozen successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Unfreeze eKey
+      tags:
+      - EKeys
+  /api/ekey/update:
+    post:
+      consumes:
+      - application/json
+      description: Update eKey information
+      parameters:
+      - description: eKey update request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.EKeyUpdateRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: eKey updated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Update eKey
+      tags:
+      - EKeys
+  /api/locks/auto-lock-time:
+    post:
+      consumes:
+      - application/json
+      description: Update TTLock auto lock time
+      parameters:
+      - description: Lock auto lock time request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockAutoLockTimeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock auto lock time updated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Set lock auto lock time
+      tags:
+      - Locks
+  /api/locks/change-admin-passcode:
+    post:
+      consumes:
+      - application/json
+      description: Change TTLock admin passcode
+      parameters:
+      - description: Lock admin passcode request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockChangeAdminPasscodeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock admin passcode changed successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Change lock admin passcode
+      tags:
+      - Locks
+  /api/locks/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete a TTLock
+      parameters:
+      - description: Lock delete request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockDeleteRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock deleted successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Delete lock
+      tags:
+      - Locks
+  /api/locks/detail:
+    post:
+      consumes:
+      - application/json
+      description: Get TTLock details
+      parameters:
+      - description: Lock detail request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockDetailsRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock detail fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock detail
+      tags:
+      - Locks
+  /api/locks/initialize:
+    post:
+      consumes:
+      - application/json
+      description: Initialize a TTLock device and register it in the system
+      parameters:
+      - description: Lock initialize payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockInitializeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock initialized successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Initialize a TTLock
+      tags:
+      - Locks
+  /api/locks/keys:
+    post:
+      consumes:
+      - application/json
+      description: Get all eKeys associated with a TTLock
+      parameters:
+      - description: Lock eKeys list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockListEKeyRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock eKeys fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock eKeys list
+      tags:
+      - Locks
+  /api/locks/list:
+    post:
+      consumes:
+      - application/json
+      description: Get a list of TTLocks
+      parameters:
+      - description: Lock list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockListRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock list fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock list
+      tags:
+      - Locks
+  /api/locks/passcodes:
+    post:
+      consumes:
+      - application/json
+      description: Get all passcodes associated with a TTLock
+      parameters:
+      - description: Lock passcodes list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.PasscodeListRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock passcodes fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get lock passcodes list
+      tags:
+      - Locks
+  /api/locks/rename:
+    post:
+      consumes:
+      - application/json
+      description: Rename a TTLock
+      parameters:
+      - description: Lock rename request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockRenameRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock renamed successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Rename lock
+      tags:
+      - Locks
+  /api/locks/update:
+    post:
+      consumes:
+      - application/json
+      description: Update TTLock information
+      parameters:
+      - description: Lock update request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.LockUpdateRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lock updated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Update lock
+      tags:
+      - Locks
+  /api/passcode/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete a TTLock passcode
+      parameters:
+      - description: Passcode delete request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.PasscodeDeleteRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Passcode deleted successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Delete passcode
+      tags:
+      - Passcodes
+  /api/passcode/generate-custom:
+    post:
+      consumes:
+      - application/json
+      description: Generate a custom TTLock passcode
+      parameters:
+      - description: Custom passcode request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.PasscodeCustomRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom passcode generated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Generate custom passcode
+      tags:
+      - Passcodes
+  /api/passcode/generate-random:
+    post:
+      consumes:
+      - application/json
+      description: Generate a random TTLock passcode
+      parameters:
+      - description: Random passcode request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.PasscodeRandomRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Random passcode generated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Generate random passcode
+      tags:
+      - Passcodes
+  /api/passcode/types:
+    post:
+      consumes:
+      - application/json
+      description: Get all TTLock passcode types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Passcode types fetched successfully
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get passcode types
+      tags:
+      - Passcodes
+  /api/passcode/update:
+    post:
+      consumes:
+      - application/json
+      description: Update a TTLock passcode
+      parameters:
+      - description: Passcode update request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.PasscodeUpdateRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Passcode updated successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Update passcode
+      tags:
+      - Passcodes
+  /api/users/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete a TTLock user
+      parameters:
+      - description: User delete request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.UserDeleteRequestParams'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: User deleted successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Delete user
+      tags:
+      - Users
+  /api/users/list:
+    post:
+      consumes:
+      - application/json
+      description: Get a list of TTLock users
+      parameters:
+      - description: Users list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.UserListRequestParams'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Users list fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get users list
+      tags:
+      - Users
+  /api/users/password-reset:
+    post:
+      consumes:
+      - application/json
+      description: Reset TTLock user password
+      parameters:
+      - description: User password reset request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.UserPasswordResetRequestParams'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: User password reset successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Reset user password
+      tags:
+      - Users
+  /api/users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new TTLock user
+      parameters:
+      - description: User register request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.UserRegisterRequestParams'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: User registered successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Register user
+      tags:
+      - Users
+swagger: "2.0"

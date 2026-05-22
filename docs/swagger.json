@@ -1,0 +1,2057 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "TTLock Api",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/auth/access-token": {
+            "post": {
+                "description": "Generate TTLock access token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get access token",
+                "parameters": [
+                    {
+                        "description": "Access token request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.AccessTokenRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Access token generated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/auth/refresh-access-token": {
+            "post": {
+                "description": "Refresh TTLock access token using refresh token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Refresh access token",
+                "parameters": [
+                    {
+                        "description": "Refresh access token request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.RefreshAccessTokenRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Access token refreshed successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/change-valid-time": {
+            "post": {
+                "description": "Change eKey validity period",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Change eKey valid time",
+                "parameters": [
+                    {
+                        "description": "eKey valid time request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyChangeValidTimeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey valid time changed successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/delete": {
+            "post": {
+                "description": "Delete an eKey",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Delete eKey",
+                "parameters": [
+                    {
+                        "description": "eKey delete request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyDeleteRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey deleted successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/freeze": {
+            "post": {
+                "description": "Freeze an eKey",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Freeze eKey",
+                "parameters": [
+                    {
+                        "description": "eKey freeze request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyFreezeUnfreezeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey frozen successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/get-one": {
+            "post": {
+                "description": "Get eKey details by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Get one eKey",
+                "parameters": [
+                    {
+                        "description": "eKey get one request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyGetOneRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/list": {
+            "post": {
+                "description": "Get all eKeys",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Get eKey list",
+                "parameters": [
+                    {
+                        "description": "eKey list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyListRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKeys fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/send": {
+            "post": {
+                "description": "Send an eKey to a user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Send eKey",
+                "parameters": [
+                    {
+                        "description": "eKey send request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeySendRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey sent successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/unfreeze": {
+            "post": {
+                "description": "Unfreeze an eKey",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Unfreeze eKey",
+                "parameters": [
+                    {
+                        "description": "eKey unfreeze request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyFreezeUnfreezeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey unfrozen successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/ekey/update": {
+            "post": {
+                "description": "Update eKey information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EKeys"
+                ],
+                "summary": "Update eKey",
+                "parameters": [
+                    {
+                        "description": "eKey update request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.EKeyUpdateRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eKey updated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/auto-lock-time": {
+            "post": {
+                "description": "Update TTLock auto lock time",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Set lock auto lock time",
+                "parameters": [
+                    {
+                        "description": "Lock auto lock time request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockAutoLockTimeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock auto lock time updated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/change-admin-passcode": {
+            "post": {
+                "description": "Change TTLock admin passcode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Change lock admin passcode",
+                "parameters": [
+                    {
+                        "description": "Lock admin passcode request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockChangeAdminPasscodeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock admin passcode changed successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/delete": {
+            "post": {
+                "description": "Delete a TTLock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Delete lock",
+                "parameters": [
+                    {
+                        "description": "Lock delete request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockDeleteRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock deleted successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/detail": {
+            "post": {
+                "description": "Get TTLock details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock detail",
+                "parameters": [
+                    {
+                        "description": "Lock detail request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockDetailsRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock detail fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/initialize": {
+            "post": {
+                "description": "Initialize a TTLock device and register it in the system",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Initialize a TTLock",
+                "parameters": [
+                    {
+                        "description": "Lock initialize payload",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockInitializeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock initialized successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/keys": {
+            "post": {
+                "description": "Get all eKeys associated with a TTLock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock eKeys list",
+                "parameters": [
+                    {
+                        "description": "Lock eKeys list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockListEKeyRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock eKeys fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/list": {
+            "post": {
+                "description": "Get a list of TTLocks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock list",
+                "parameters": [
+                    {
+                        "description": "Lock list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockListRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock list fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/passcodes": {
+            "post": {
+                "description": "Get all passcodes associated with a TTLock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Get lock passcodes list",
+                "parameters": [
+                    {
+                        "description": "Lock passcodes list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.PasscodeListRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock passcodes fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/rename": {
+            "post": {
+                "description": "Rename a TTLock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Rename lock",
+                "parameters": [
+                    {
+                        "description": "Lock rename request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockRenameRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock renamed successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/locks/update": {
+            "post": {
+                "description": "Update TTLock information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Locks"
+                ],
+                "summary": "Update lock",
+                "parameters": [
+                    {
+                        "description": "Lock update request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.LockUpdateRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lock updated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/passcode/delete": {
+            "post": {
+                "description": "Delete a TTLock passcode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Passcodes"
+                ],
+                "summary": "Delete passcode",
+                "parameters": [
+                    {
+                        "description": "Passcode delete request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.PasscodeDeleteRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passcode deleted successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/passcode/generate-custom": {
+            "post": {
+                "description": "Generate a custom TTLock passcode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Passcodes"
+                ],
+                "summary": "Generate custom passcode",
+                "parameters": [
+                    {
+                        "description": "Custom passcode request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.PasscodeCustomRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Custom passcode generated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/passcode/generate-random": {
+            "post": {
+                "description": "Generate a random TTLock passcode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Passcodes"
+                ],
+                "summary": "Generate random passcode",
+                "parameters": [
+                    {
+                        "description": "Random passcode request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.PasscodeRandomRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Random passcode generated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/passcode/types": {
+            "post": {
+                "description": "Get all TTLock passcode types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Passcodes"
+                ],
+                "summary": "Get passcode types",
+                "responses": {
+                    "200": {
+                        "description": "Passcode types fetched successfully",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/passcode/update": {
+            "post": {
+                "description": "Update a TTLock passcode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Passcodes"
+                ],
+                "summary": "Update passcode",
+                "parameters": [
+                    {
+                        "description": "Passcode update request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.PasscodeUpdateRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Passcode updated successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/users/delete": {
+            "post": {
+                "description": "Delete a TTLock user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete user",
+                "parameters": [
+                    {
+                        "description": "User delete request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.UserDeleteRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "User deleted successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/users/list": {
+            "post": {
+                "description": "Get a list of TTLock users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get users list",
+                "parameters": [
+                    {
+                        "description": "Users list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.UserListRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Users list fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/users/password-reset": {
+            "post": {
+                "description": "Reset TTLock user password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset user password",
+                "parameters": [
+                    {
+                        "description": "User password reset request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.UserPasswordResetRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "User password reset successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/users/register": {
+            "post": {
+                "description": "Register a new TTLock user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Register user",
+                "parameters": [
+                    {
+                        "description": "User register request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.UserRegisterRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "User registered successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ttlock.AccessTokenRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.EKeyChangeValidTimeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "endDate",
+                "keyId",
+                "startDate"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "keyId": {
+                    "type": "integer"
+                },
+                "startDate": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeyDeleteRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "keyId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "keyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeyFreezeUnfreezeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "keyId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "keyId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeyGetOneRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeyListRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "lockAlias": {
+                    "type": "string"
+                },
+                "pageNo": {
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeySendRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "endDate",
+                "keyName",
+                "lockId",
+                "receiverUsername",
+                "startDate"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "createUser": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "keyName": {
+                    "type": "string"
+                },
+                "keyRight": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "receiverUsername": {
+                    "type": "string"
+                },
+                "remarks": {
+                    "type": "string"
+                },
+                "remoteEnable": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "startDate": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.EKeyUpdateRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "keyId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "keyId": {
+                    "type": "integer"
+                },
+                "keyName": {
+                    "type": "string"
+                },
+                "remoteEnable": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "ttlock.LockAutoLockTimeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId",
+                "seconds",
+                "type"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "seconds": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "ttlock.LockChangeAdminPasscodeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "changeType",
+                "clientId",
+                "date",
+                "lockId",
+                "password"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "changeType": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.LockDeleteRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockDetailsRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockInitializeRequest": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockData"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "lockAlias": {
+                    "type": "string"
+                },
+                "lockData": {
+                    "type": "string"
+                },
+                "nbInitSuccess": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockListEKeyRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "keyRight": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "orderBy": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "maximum": 200,
+                    "minimum": 1
+                },
+                "searchStr": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.LockListRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "groupId": {
+                    "type": "integer"
+                },
+                "lockAlias": {
+                    "type": "string"
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "maximum": 1000,
+                    "minimum": 1
+                }
+            }
+        },
+        "ttlock.LockRenameRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockAlias",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockAlias": {
+                    "type": "string"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.LockUpdateRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockData",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockData": {
+                    "type": "string"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.PasscodeCustomRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "addType",
+                "clientId",
+                "date",
+                "endDate",
+                "keyboardPwd",
+                "keyboardPwdType",
+                "lockId",
+                "startDate"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "addType": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "keyboardPwd": {
+                    "type": "integer"
+                },
+                "keyboardPwdName": {
+                    "type": "string"
+                },
+                "keyboardPwdType": {
+                    "type": "integer",
+                    "enum": [
+                        2,
+                        3
+                    ]
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "startDate": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.PasscodeDeleteRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "deleteType",
+                "keyboardPwdId",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "deleteType": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "keyboardPwdId": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.PasscodeListRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId",
+                "orderBy",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "orderBy": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "maximum": 200,
+                    "minimum": 1
+                },
+                "searchStr": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.PasscodeRandomRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "endDate",
+                "keyboardPwdType",
+                "lockId",
+                "startDate"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "keyboardPwdName": {
+                    "type": "string"
+                },
+                "keyboardPwdType": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "startDate": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.PasscodeUpdateRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "changeType",
+                "clientId",
+                "date",
+                "keyboardPwdId",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "changeType": {
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        2
+                    ]
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "keyboardPwdId": {
+                    "type": "integer"
+                },
+                "keyboardPwdName": {
+                    "type": "string"
+                },
+                "lockId": {
+                    "type": "integer"
+                },
+                "newKeyboardPwd": {
+                    "type": "string"
+                },
+                "startDate": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.RefreshAccessTokenRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "grant_type",
+                "refresh_token"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "grant_type": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.UserDeleteRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "date",
+                "username"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.UserListRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "date",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "maximum": 100,
+                    "minimum": 1
+                },
+                "startDate": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.UserPasswordResetRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "date",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.UserRegisterRequestParams": {
+            "type": "object",
+            "required": [
+                "clientId",
+                "clientSecret",
+                "date",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
