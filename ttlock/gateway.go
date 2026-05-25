@@ -195,3 +195,188 @@ func (g *Gateway) ListLock(request *ttt.GatewayListLockRequestParams) (*ttt.Gate
 
 	return &response, nil
 }
+
+func (g *Gateway) ListDevice(request *ttt.GatewayListDeviceRequestParams) (*ttt.GatewayListDeviceResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("gatewayId", strconv.Itoa(request.GatewayId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/gateway/listDevice?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.GatewayListDeviceResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	return &response, nil
+}
+
+func (g *Gateway) Detail(request *ttt.GatewayDetailsRequestParams) (*ttt.GatewayDetailsResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("gatewayId", strconv.Itoa(request.GatewayId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/gateway/detail?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.GatewayDetailsResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	return &response, nil
+}
+
+func (g *Gateway) UploadDetail(request *ttt.GatewayUploadDetailRequestParams) (*ttt.Err, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("gatewayId", strconv.Itoa(request.GatewayId))
+	q.Add("modelNum", request.ModelNum)
+	q.Add("hardwareRevision", request.HardwareRevision)
+	q.Add("firmwareRevision", request.FirmwareRevision)
+	q.Add("networkName", request.NetworkName)
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/gateway/uploadDetail"
+
+	bytes, code, err := TTLockV3Client.PostWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/x-www-form-urlencoded"}, []byte(payload))
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.Err
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	return &response, nil
+}
+
+func (g *Gateway) CheckUpgrade(request *ttt.GatewayCheckUpgradeRequestParams) (*ttt.GatewayCheckUpgradeResponse, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("gatewayId", strconv.Itoa(request.GatewayId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/gateway/upgradeCheck?" + payload
+
+	bytes, code, err := TTLockV3Client.GetWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/json"})
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.GatewayCheckUpgradeResponse
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	return &response, nil
+}
+
+func (g *Gateway) SetUpgradeMode(request *ttt.GatewaySetUpgradeModeRequestParams) (*ttt.Err, error) {
+	if err := Validate.Struct(request); err != nil {
+		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
+		return nil, fmt.Errorf("validation failed: %w", err)
+	}
+
+	q := url.Values{}
+
+	q.Add("clientId", request.ClientId)
+	q.Add("accessToken", request.AccessToken)
+	q.Add("gatewayId", strconv.Itoa(request.GatewayId))
+	q.Add("date", strconv.FormatInt(request.Date, 10))
+
+	payload := q.Encode()
+	urlPath := "/gateway/setUpgradeMode"
+
+	bytes, code, err := TTLockV3Client.PostWithCtx(context.Background(), urlPath, map[string]string{"Content-Type": "application/x-www-form-urlencoded"}, []byte(payload))
+	if err != nil {
+		return nil, err
+	}
+
+	if code < 200 || code >= 300 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	var response ttt.Err
+	if err := json.Unmarshal(bytes, &response); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
+	}
+	if response.ErrCode != 0 {
+		return nil, fmt.Errorf("API request failed with status code: %d, body: %s", code, string(bytes))
+	}
+
+	return &response, nil
+}

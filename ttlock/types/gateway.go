@@ -111,3 +111,115 @@ type GatewayListLockResponse struct {
 	List []GatewayLockObject `json:"list"`
 	Err
 }
+
+// List Device
+
+type GatewayListDeviceRequestParams struct {
+	Auth
+	GatewayId int   `json:"gatewayId" validate:"required"`
+	Date      int64 `json:"date" validate:"required"`
+}
+
+// {
+// "deviceType": 0,
+// "deviceId": 532323,
+// "deviceName":"YS1003_c18c9c",
+// "deviceAlias":"entrance lock",
+// "deviceMac": "C5:40:E0:9C:8C:C1",
+// "rssi":-65,
+// "updateDate": 1626674053000
+// }
+
+type GatewayDeviceObject struct {
+	DeviceType  int    `json:"deviceType"`
+	DeviceId    int    `json:"deviceId"`
+	DeviceName  string `json:"deviceName"`
+	DeviceAlias string `json:"deviceAlias"`
+	DeviceMac   string `json:"deviceMac"`
+	Rssi        int    `json:"rssi"`
+	UpdateDate  int64  `json:"updateDate"`
+}
+
+type GatewayListDeviceResponse struct {
+	List []GatewayDeviceObject `json:"list"`
+	Err
+}
+
+// Details
+
+type GatewayDetailsRequestParams struct {
+	Auth
+	GatewayId int   `json:"gatewayId" validate:"required"`
+	Date      int64 `json:"date" validate:"required"`
+}
+
+// {
+// "gatewayMac": "DC:A4:53:85:39:74",
+// "lockNum": 1,
+// "gatewayName": "G2_743985",
+// "networkName": "ttlock",
+// "isOnline": 0,
+// "gatewayVersion": 2,
+// "gatewayId": 347
+// }
+
+type GatewayDetailsResponse struct {
+	GatewayMac     string `json:"gatewayMac"`
+	LockNum        int    `json:"lockNum"`
+	GatewayName    string `json:"gatewayName"`
+	NetworkName    string `json:"networkName"`
+	IsOnline       int    `json:"isOnline"`
+	GatewayVersion int    `json:"gatewayVersion"`
+	GatewayId      int    `json:"gatewayId"`
+	Err
+}
+
+// Upload Detail
+
+type GatewayUploadDetailRequestParams struct {
+	Auth
+	GatewayId        int    `json:"gatewayId" validate:"required"`
+	ModelNum         string `json:"modelNum" validate:"required"`
+	HardwareRevision string `json:"hardwareRevision" validate:"required"`
+	FirmwareRevision string `json:"firmwareRevision" validate:"required"`
+	NetworkName      string `json:"networkName" validate:"required"`
+	Date             int64  `json:"date" validate:"required"`
+}
+
+// Check Upgrade
+
+type GatewayCheckUpgradeRequestParams struct {
+	Auth
+	GatewayId int   `json:"gatewayId" validate:"required"`
+	Date      int64 `json:"date" validate:"required"`
+}
+
+// {
+// "needUpgrade": 1,
+// "firmwareInfo":
+// {
+// 	"modelNum":"SN227",
+// 	"hardwareRevision":"1.1.2",
+// 	"firmwareRevision":"1.1.20.1027"
+// },
+// "version":"1.1.21.1027"
+// }
+
+type GatewayCheckUpgradeResponse struct {
+	NeedUpgrade  int `json:"needUpgrade"`
+	FirmwareInfo struct {
+		ModelNum         string `json:"modelNum"`
+		HardwareRevision string `json:"hardwareRevision"`
+		FirmwareRevision string `json:"firmwareRevision"`
+	} `json:"firmwareInfo"`
+	Version string `json:"version"`
+	Err
+}
+
+// Set Upgrade Mode
+
+type GatewaySetUpgradeModeRequestParams struct {
+	Auth
+	GatewayId int   `json:"gatewayId" validate:"required"`
+	Date      int64 `json:"date" validate:"required"`
+}
