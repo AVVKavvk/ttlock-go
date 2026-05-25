@@ -160,7 +160,7 @@ func (g *Gateway) ListByLock(request *ttt.GatewayListByLockRequestParams) (*ttt.
 	return &response, nil
 }
 
-func (g *Gateway) ListLock(request *ttt.GatewayListLockRequestParams) (*ttt.GatewayListLockResponse, error) {
+func (g *Gateway) ListLocks(request *ttt.GatewayListLockRequestParams) (*ttt.GatewayListLockResponse, error) {
 	if err := Validate.Struct(request); err != nil {
 		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
 		return nil, fmt.Errorf("validation failed: %w", err)
@@ -196,7 +196,7 @@ func (g *Gateway) ListLock(request *ttt.GatewayListLockRequestParams) (*ttt.Gate
 	return &response, nil
 }
 
-func (g *Gateway) ListDevice(request *ttt.GatewayListDeviceRequestParams) (*ttt.GatewayListDeviceResponse, error) {
+func (g *Gateway) ListDevices(request *ttt.GatewayListDeviceRequestParams) (*ttt.GatewayListDeviceResponse, error) {
 	if err := Validate.Struct(request); err != nil {
 		log.Errorxf(&logger.XFields{}, "validation failed: %v", err)
 		return nil, fmt.Errorf("validation failed: %w", err)

@@ -415,6 +415,406 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/gateway/check-upgrade": {
+            "post": {
+                "description": "Check TTLock gateway firmware upgrade",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Check gateway upgrade",
+                "parameters": [
+                    {
+                        "description": "Gateway check upgrade request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayCheckUpgradeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway upgrade check fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/delete": {
+            "post": {
+                "description": "Delete a TTLock gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Delete gateway",
+                "parameters": [
+                    {
+                        "description": "Gateway delete request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayDeleteRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway deleted successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/detail": {
+            "post": {
+                "description": "Get TTLock gateway details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Get gateway details",
+                "parameters": [
+                    {
+                        "description": "Gateway details request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayDetailsRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway details fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/list": {
+            "post": {
+                "description": "Get all TTLock gateways",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Get gateway list",
+                "parameters": [
+                    {
+                        "description": "Gateway list request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayListRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway list fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/list-by-lock": {
+            "post": {
+                "description": "Get gateways associated with a TTLock",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Get gateways by lock",
+                "parameters": [
+                    {
+                        "description": "Gateway list by lock request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayListByLockRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway list by lock fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/list-devices": {
+            "post": {
+                "description": "Get devices connected to a gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Get gateway devices",
+                "parameters": [
+                    {
+                        "description": "Gateway list devices request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayListDeviceRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway devices fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/list-locks": {
+            "post": {
+                "description": "Get locks connected to a gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Get locks by gateway",
+                "parameters": [
+                    {
+                        "description": "Gateway list locks request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayListLockRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway locks fetched successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/rename": {
+            "post": {
+                "description": "Rename a TTLock gateway",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Rename gateway",
+                "parameters": [
+                    {
+                        "description": "Gateway rename request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayRenameRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway renamed successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/set-upgrade-mode": {
+            "post": {
+                "description": "Set TTLock gateway firmware upgrade mode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Set gateway upgrade mode",
+                "parameters": [
+                    {
+                        "description": "Gateway set upgrade mode request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewaySetUpgradeModeRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway upgrade mode set successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/gateway/upload-details": {
+            "post": {
+                "description": "Upload TTLock gateway details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Gateway"
+                ],
+                "summary": "Upload gateway details",
+                "parameters": [
+                    {
+                        "description": "Gateway upload details request params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ttlock.GatewayUploadDetailRequestParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gateway details uploaded successfully",
+                        "schema": {}
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {}
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/api/locks/auto-lock-time": {
             "post": {
                 "description": "Update TTLock auto lock time",
@@ -1651,6 +2051,271 @@ const docTemplate = `{
                         1,
                         2
                     ]
+                }
+            }
+        },
+        "ttlock.GatewayCheckUpgradeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayDeleteRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayDetailsRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayListByLockRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "lockId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "lockId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayListDeviceRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayListLockRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayListRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "pageNo",
+                "pageSize"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "orderBy": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "pageNo": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "maximum": 200,
+                    "minimum": 1
+                }
+            }
+        },
+        "ttlock.GatewayRenameRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId",
+                "gatewayName"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                },
+                "gatewayName": {
+                    "type": "string"
+                }
+            }
+        },
+        "ttlock.GatewaySetUpgradeModeRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "gatewayId"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ttlock.GatewayUploadDetailRequestParams": {
+            "type": "object",
+            "required": [
+                "accessToken",
+                "clientId",
+                "date",
+                "firmwareRevision",
+                "gatewayId",
+                "hardwareRevision",
+                "modelNum",
+                "networkName"
+            ],
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "firmwareRevision": {
+                    "type": "string"
+                },
+                "gatewayId": {
+                    "type": "integer"
+                },
+                "hardwareRevision": {
+                    "type": "string"
+                },
+                "modelNum": {
+                    "type": "string"
+                },
+                "networkName": {
+                    "type": "string"
                 }
             }
         },

@@ -177,6 +177,193 @@ definitions:
     - date
     - keyId
     type: object
+  ttlock.GatewayCheckUpgradeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayDeleteRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayDetailsRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayListByLockRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      lockId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - lockId
+    type: object
+  ttlock.GatewayListDeviceRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayListLockRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayListRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      orderBy:
+        enum:
+        - 0
+        - 1
+        - 2
+        type: integer
+      pageNo:
+        minimum: 1
+        type: integer
+      pageSize:
+        maximum: 200
+        minimum: 1
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - pageNo
+    - pageSize
+    type: object
+  ttlock.GatewayRenameRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+      gatewayName:
+        type: string
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    - gatewayName
+    type: object
+  ttlock.GatewaySetUpgradeModeRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      gatewayId:
+        type: integer
+    required:
+    - accessToken
+    - clientId
+    - date
+    - gatewayId
+    type: object
+  ttlock.GatewayUploadDetailRequestParams:
+    properties:
+      accessToken:
+        type: string
+      clientId:
+        type: string
+      date:
+        type: integer
+      firmwareRevision:
+        type: string
+      gatewayId:
+        type: integer
+      hardwareRevision:
+        type: string
+      modelNum:
+        type: string
+      networkName:
+        type: string
+    required:
+    - accessToken
+    - clientId
+    - date
+    - firmwareRevision
+    - gatewayId
+    - hardwareRevision
+    - modelNum
+    - networkName
+    type: object
   ttlock.LockAutoLockTimeRequestParams:
     properties:
       accessToken:
@@ -992,6 +1179,276 @@ paths:
       summary: Update eKey
       tags:
       - EKeys
+  /api/gateway/check-upgrade:
+    post:
+      consumes:
+      - application/json
+      description: Check TTLock gateway firmware upgrade
+      parameters:
+      - description: Gateway check upgrade request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayCheckUpgradeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway upgrade check fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Check gateway upgrade
+      tags:
+      - Gateway
+  /api/gateway/delete:
+    post:
+      consumes:
+      - application/json
+      description: Delete a TTLock gateway
+      parameters:
+      - description: Gateway delete request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayDeleteRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway deleted successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Delete gateway
+      tags:
+      - Gateway
+  /api/gateway/detail:
+    post:
+      consumes:
+      - application/json
+      description: Get TTLock gateway details
+      parameters:
+      - description: Gateway details request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayDetailsRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway details fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get gateway details
+      tags:
+      - Gateway
+  /api/gateway/list:
+    post:
+      consumes:
+      - application/json
+      description: Get all TTLock gateways
+      parameters:
+      - description: Gateway list request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayListRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway list fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get gateway list
+      tags:
+      - Gateway
+  /api/gateway/list-by-lock:
+    post:
+      consumes:
+      - application/json
+      description: Get gateways associated with a TTLock
+      parameters:
+      - description: Gateway list by lock request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayListByLockRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway list by lock fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get gateways by lock
+      tags:
+      - Gateway
+  /api/gateway/list-devices:
+    post:
+      consumes:
+      - application/json
+      description: Get devices connected to a gateway
+      parameters:
+      - description: Gateway list devices request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayListDeviceRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway devices fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get gateway devices
+      tags:
+      - Gateway
+  /api/gateway/list-locks:
+    post:
+      consumes:
+      - application/json
+      description: Get locks connected to a gateway
+      parameters:
+      - description: Gateway list locks request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayListLockRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway locks fetched successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Get locks by gateway
+      tags:
+      - Gateway
+  /api/gateway/rename:
+    post:
+      consumes:
+      - application/json
+      description: Rename a TTLock gateway
+      parameters:
+      - description: Gateway rename request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayRenameRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway renamed successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Rename gateway
+      tags:
+      - Gateway
+  /api/gateway/set-upgrade-mode:
+    post:
+      consumes:
+      - application/json
+      description: Set TTLock gateway firmware upgrade mode
+      parameters:
+      - description: Gateway set upgrade mode request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewaySetUpgradeModeRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway upgrade mode set successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Set gateway upgrade mode
+      tags:
+      - Gateway
+  /api/gateway/upload-details:
+    post:
+      consumes:
+      - application/json
+      description: Upload TTLock gateway details
+      parameters:
+      - description: Gateway upload details request params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ttlock.GatewayUploadDetailRequestParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Gateway details uploaded successfully
+          schema: {}
+        "400":
+          description: Bad request
+          schema: {}
+        "500":
+          description: Internal server error
+          schema: {}
+      summary: Upload gateway details
+      tags:
+      - Gateway
   /api/locks/auto-lock-time:
     post:
       consumes:

@@ -84,6 +84,19 @@ func AddRoutes(router *echo.Echo) {
 		passcode.POST("/update", api.PasscodeUpdate)
 		passcode.POST("/delete", api.PasscodeDelete)
 	}
+	gateway := router.Group("/api/gateway")
+	{
+		gateway.POST("/list", api.GatewayList)
+		gateway.POST("/delete", api.GatewayDelete)
+		gateway.POST("/rename", api.GatewayRename)
+		gateway.POST("/list-by-lock", api.GatewayListByLock)
+		gateway.POST("/list-locks", api.GatewayListLocks)
+		gateway.POST("/list-devices", api.GatewayListDevices)
+		gateway.POST("/detail", api.GatewayDetail)
+		gateway.POST("/upload-details", api.GatewayUploadDetails)
+		gateway.POST("/check-upgrade", api.GatewayCheckUpgrade)
+		gateway.POST("/set-upgrade-mode", api.GatewaySetUpgradeMode)
+	}
 
 	auth := router.Group("/api/auth")
 	{

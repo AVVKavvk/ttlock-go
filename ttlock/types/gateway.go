@@ -4,7 +4,7 @@ type GatewayListRequestParams struct {
 	Auth
 	PageNo   int   `json:"pageNo" validate:"required,min=1"`
 	PageSize int   `json:"pageSize" validate:"required,min=1,max=200"`
-	OrderBy  int   `json:"orderBy" validate:"required,oneof=0 1 2"`
+	OrderBy  int   `json:"orderBy" validate:"oneof=0 1 2"`
 	Date     int64 `json:"date" validate:"required"`
 }
 
